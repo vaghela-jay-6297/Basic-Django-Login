@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>
+    {% block title %}
+        Micro Ab Technology
+    {% endblock %}
+  </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Micro Ab Technology</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/">Home</a></li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Course <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Python</a></li>
+          <li><a href="#">Java</a></li>
+          <li><a href="#">Php</a></li>
+        </ul>
+      </li>
+      <li><a href="{% url 'about' %}">About us</a></li>
+      <li><a href="{% url 'contact-us' %}">Contact us</a></li>
+    </ul>
+    {% if request.session.email %}
+    <!-- Execute this block when User Session is activate -->
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="{% url 'change-password' %}"><span class="glyphicon glyphicon-log-out"></span> Change Password</a></li>
+        <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span> Logout({{ request.session.fname }})</a></li>
+      </ul>
+    {% else %}  
+    <!-- Execute this block when User Session is not activate -->
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="{% url 'sign-up' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    {% endif %}
+  </div>
+</nav>
+  
+{% block content %}
+{% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block title %}sign-up-Micro Ab Technology{% endblock %}
+
+{% block content %}
+    <center>
+        <h1>Sign-up</h1> <hr/>
+        {% if warning_mes %}
+            <strong class="alert alert-warning">{{ warning_mes }}</strong>
+            <br/> 
+        {% endif %}
+
+        {% if success_mes %}
+            <strong class="alert alert-success">{{ success_mes }}</strong> 
+            <br/>
+        {% endif %}
+        
+
+        <table border='0' width='380px' height="100px" align="center">
+            <form method="post" name="sign-up" action="{% url 'sign-up' %}">
+                {% csrf_token %}
+                <tr>
+                    <div class="form-group">
+                        <td><label for="email">Email: </label></td>
+                        <td><input type="email" class="form-control" id="email" name="email"></td>
+                    </div>
+                </tr>
+
+                <tr>
+                    <div class="form-group">
+                        <td><label for="fName">First Name: </label></td>
+                        <td><input type="text" class="form-control" id="fname" name="fname"></td>
+                    </div>
+                </tr>
+                
+                <tr>
+                    <div class="form-group">
+                        <td><label for="lName">Last Name: </label></td>
+                        <td><input type="text" class="form-control" id="lname" name="lname"></td>
+                    </div>
+                </tr>
+                
+
+                <tr>
+                    <div class="form-group">
+                        <td><label for="address">Address: </label></td>
+                        <td><textarea class="form-control" rows="5" id="address" name="address"></textarea></td>
+                    </div>
+                </tr>
+
+                <tr>
+                    <div class="form-group">
+                        <td><label for="password">Password: </label></td>
+                        <td><input type="password" class="form-control" id="password" name="password"></td>
+                    </div>
+                </tr>
+
+                <tr>
+                    <div class="form-group">
+                        <td><label for="cpassword">Confirm Password: </label></td>
+                        <td><input type="password" class="form-control" id="cpassword" name="cpassword"></td>
+                    </div>
+                </tr>
+
+                <tr>
+                    <td colspan="2" align="center"><button type="submit" style="width: 150px;" class="btn btn-primary btn-lg">Submit</button></td>
+                </tr>
+            </form>
+        </table>
+    </center>
+
+
+{% endblock %}

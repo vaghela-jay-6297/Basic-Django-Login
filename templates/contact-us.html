@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact-Micro Ab Technology{% endblock %}
+
+{% block content %}
+    <center>
+        <h1>Contact-us</h1> <hr/>
+        {% if warning_mes %}
+            <strong class="alert alert-warning">{{ warning_mes }}</strong> 
+        {% endif %}
+
+        {% if success_mes %}
+            <strong class="alert alert-success">{{ success_mes }}</strong> 
+        {% endif %}
+
+        <table border='0' width='380px' height="100px" cellpadding='0' cellspacing='0' align="center">
+            <form method="post" name="contact" action="{% url 'contact-us' %}">
+                {% csrf_token %}
+                <tr>
+                    <div class="form-group">
+                        <td><label for="email">Email: </label></td>
+                        <td><input type="email" class="form-control" id="email" name="email"></td>
+                    </div>
+                </tr>
+
+                <tr>
+                    <div class="form-group">
+                        <td><label for="name">Name: </label></td>
+                        <td><input type="text" class="form-control" id="name" name="name"></td>
+                    </div>
+                </tr>
+                
+                <tr>
+                    <div class="form-group">
+                        <td><label for="comment">Message:</label></td>
+                        <td><textarea class="form-control" rows="5" id="comment" name="message" placeholder="Leave your Message here..."></textarea></td>
+                    </div>
+                </tr>
+
+                <tr>
+                    <td><button type="submit" class="btn btn-primary btn-lg">Send Message</button></td>
+                    <!-- <td><input type="submit" value="Submit"></td> -->
+                </tr>
+            </form>
+        </table>
+    </center>
+
+
+{% endblock %}

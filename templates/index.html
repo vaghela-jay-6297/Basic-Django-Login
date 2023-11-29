@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Index-Micro Ab Technology{% endblock %}
+
+{% block content %}
+    <h1>Index page</h1>
+    {% if warning_mes %}
+        <strong class="alert alert-warning">{{ warning_mes }}</strong> 
+    {% endif %}
+
+    {% if success_mes %}
+        <strong class="alert alert-success">{{ success_mes }}</strong> 
+    {% endif %}
+{% endblock %}

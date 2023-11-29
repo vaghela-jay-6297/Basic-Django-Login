@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Login-Micro Ab Technology{% endblock %}
+
+{% block content %}
+    <center>
+        <h1>Login</h1> <hr/>
+        {% if warning_mes %}
+            <strong class="alert alert-warning">{{ warning_mes }}</strong> 
+        {% endif %}
+
+        {% if success_mes %}
+            <strong class="alert alert-success">{{ success_mes }}</strong> 
+        {% endif %}
+        <div class="table-responsive">
+            <table width='380px' height="100px" align="center">
+                <form method="post" name="login" action="{% url 'login' %}">
+                    {% csrf_token %}
+                    <tr>
+                        <div class="form-group">
+                            <td><label for="email">Email: </label></td>
+                            <td><input type="email" class="form-control" id="email" name="email"></td>
+                        </div>
+                    </tr>
+
+                    <tr>
+                        <div class="form-group">
+                            <td><label for="password">Password: </label></td>
+                            <td><input type="password" class="form-control" id="password" name="password"></td>
+                        </div>
+                    </tr>
+
+                    <tr>
+                        <td><button type="submit" class="btn btn-primary">Login</button></td>
+                        <td><a href="{% url 'forgot-password' %}"><input type="button" value="Forgot Password" class="btn btn-info"></a></td>
+                    </tr>
+                </form>
+            </table>
+        </div>
+    </center>
+
+
+{% endblock %}
